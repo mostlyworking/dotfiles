@@ -2,10 +2,6 @@
 . "$HOME/.local/bin/env"
 export PATH="/opt/homebrew/bin:$PATH"
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:$HOME/.lmstudio/bin"
-# End of LM Studio CLI section
-
 export VISUAL="nvim"
 export EDITOR="nvim"
 export GH_EDITOR="nvim"
@@ -19,7 +15,7 @@ bindkey "\e^?" backward-kill-word
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:$HOME/.dual-graph"
 
-
+# linear issue create: Short hand to create linear issue and open description in nvim
 lic() {
 local title="$1"
  
@@ -47,10 +43,9 @@ local title="$1"
     return 1
   fi
 
-  # Create the issue passing the title, the nvim description, and any other flags you typed
+  # Create the issue passing the title, the nvim description, and flags
   linear issue create --title "$title" --description "$desc" "$@"
 
-  # Clean up the temp file
   rm "$tmpfile"
 }
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
