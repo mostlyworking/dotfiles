@@ -1,0 +1,14 @@
+.DS_Store
+*.bak
+*.swp
+*.swo
+*.tmp
+*.log
+*.old
+
+# Tool/runtime state that should not be versioned with config.
+.nvimlog
+htoprc.tmp.*
+node_modules/
+__pycache__/
+.cache/
