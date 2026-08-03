@@ -12,7 +12,10 @@
 [push]
 	autoSetupRemote = true
 [merge]
-	tool = nvimdiff
+	tool = nvim
 	conflictstyle = diff3
 [mergetool]
 	prompt = false
+	keepBackup = false
+[mergetool "nvim"]
+	cmd = nvim -c \"set hidden\" -c \"leftabove vertical diffsplit $LOCAL\" -c \"rightbelow vertical diffsplit $REMOTE\" -c \"wincmd J\" -c \"edit $MERGED\" -c \"wincmd k\" \"$MERGED\"
