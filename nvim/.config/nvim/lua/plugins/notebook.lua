@@ -35,7 +35,7 @@ return {
       { "<leader>x", function() require("notebook-navigator").run_and_move() end, desc = "Run and move" },
     },
     dependencies = {
-      "echasnovski/mini.comment",
+      "nvim-mini/mini.comment",
       "hkupty/iron.nvim", 
       "anuvyklack/hydra.nvim",
     },
@@ -55,7 +55,7 @@ return {
 
   -- 3. Highlighting: Makes the # %% cell markers stand out visually
   {
-    "echasnovski/mini.hipatterns",
+    "nvim-mini/mini.hipatterns",
     event = "VeryLazy",
     opts = function()
       local nn = require("notebook-navigator")
