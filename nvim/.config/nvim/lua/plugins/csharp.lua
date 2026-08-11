@@ -1,7 +1,7 @@
 return {
   -- 1. Configure Mason to use the custom Roslyn registry
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = function(_, opts)
       opts.registries = {
         "github:mason-org/mason-registry",
