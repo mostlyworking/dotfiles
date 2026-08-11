@@ -49,3 +49,4 @@ local title="$1"
   rm "$tmpfile"
 }
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+source "/Users/danvicente/.config/stax/shell-setup.sh" # stax shell-setup
