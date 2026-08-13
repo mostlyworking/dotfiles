@@ -26,7 +26,6 @@ local title="$1"
   fi
 
   shift # Remove the title from the list of arguments
-
   # Create a temp markdown file
   local tmpfile=$(mktemp /tmp/linear-issue-XXXXXX.md)
 
@@ -48,5 +47,12 @@ local title="$1"
 
   rm "$tmpfile"
 }
+
+lazygit() {
+    git add .
+    git commit -a -m "$1"
+    git push
+}
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 source "/Users/danvicente/.config/stax/shell-setup.sh" # stax shell-setup
+
