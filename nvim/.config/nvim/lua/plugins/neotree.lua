@@ -18,10 +18,11 @@ return {
       follow_current_file = { enabled = false },
       use_libuv_file_watcher = true,
       filtered_items = {
-        visible = true,
+        visible = false,
         hide_dotfiles = false,
         hide_gitignored = false,
-        hide_by_name = {},
+        hide_by_name = { ".venv", "__pycache__", ".git" },
+        never_show = {},
       },
     },
     event_handlers = {
