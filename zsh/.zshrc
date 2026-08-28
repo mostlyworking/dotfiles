@@ -92,7 +92,6 @@ function agent() {
         fi
     done
     
-    # 3. Launch with BOTH flags to satisfy Ollama and Hermes
     if [[ -n "$model_name" ]]; then
         ollama launch hermes --model "$model_name" -- -p "$profile_name" -m "$model_name" chat "${passed_args[@]}"
     else
