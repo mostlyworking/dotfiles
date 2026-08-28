@@ -53,6 +53,49 @@ lazygit() {
     git commit -a -m "$1"
     git push
 }
+
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 source "/Users/danvicente/.config/stax/shell-setup.sh" # stax shell-setup
 
+
+# bun completions
+[ -s "/Users/danvicente/.bun/_bun" ] && source "/Users/danvicente/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+
+function agent() {
+    local tmux_sess=$(tmux display-message -p "#S" 2>/dev/null || echo "default")
+    local profile_name=$(echo "$tmux_sess" | tr ' .' '-')
+    
+    if [ "$profile_name" != "default" ] && [ ! -d "$HOME/.hermes/profiles/$profile_name" ]; then
+        echo "🚀 First time in this tmux session! Creating isolated profile: $profile_name"
+        hermes profile create "$profile_name" > /dev/null
+        cp "$HOME/.hermes/config.yaml" "$HOME/.hermes/profiles/$profile_name/config.yaml" 2>/dev/null
+        cp "$HOME/.hermes/.env" "$HOME/.hermes/profiles/$profile_name/.env" 2>/dev/null
+    fi
+    
+    echo "🧠 Context locked to: $profile_name"
+    
+    local model_name=""
+    local passed_args=()
+    
+    while [[ $# -gt 0 ]]; do
+        if [[ "$1" == "--model" && -n "$2" ]]; then
+            model_name="$2"
+            shift 2
+        else
+            passed_args+=("$1")
+            shift
+        fi
+    done
+    
+    # 3. Launch with BOTH flags to satisfy Ollama and Hermes
+    if [[ -n "$model_name" ]]; then
+        ollama launch hermes --model "$model_name" -- -p "$profile_name" -m "$model_name" chat "${passed_args[@]}"
+    else
+        ollama launch hermes -- -p "$profile_name" chat "${passed_args[@]}"
+    fi
+}
