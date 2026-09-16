@@ -98,3 +98,7 @@ function agent() {
         ollama launch hermes -- -p "$profile_name" chat "${passed_args[@]}"
     fi
 }
+
+# Added by flyctl installer
+export FLYCTL_INSTALL="/Users/danvicente/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
