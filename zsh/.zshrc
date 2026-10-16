@@ -1,5 +1,5 @@
 # User-local CLI tools
-. "$HOME/.local/bin/env"
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 export PATH="/opt/homebrew/bin:$PATH"
 
 export VISUAL="nvim"
@@ -55,11 +55,11 @@ lazygit() {
 }
 
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-source "/Users/danvicente/.config/stax/shell-setup.sh" # stax shell-setup
+[ -f "$HOME/.config/stax/shell-setup.sh" ] && source "$HOME/.config/stax/shell-setup.sh" # stax shell-setup
 
 
 # bun completions
-[ -s "/Users/danvicente/.bun/_bun" ] && source "/Users/danvicente/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -100,5 +100,5 @@ function agent() {
 }
 
 # Added by flyctl installer
-export FLYCTL_INSTALL="/Users/danvicente/.fly"
+export FLYCTL_INSTALL="$HOME/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
