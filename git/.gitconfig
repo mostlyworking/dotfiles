@@ -19,3 +19,9 @@
 	keepBackup = false
 [mergetool "nvim"]
 	cmd = nvim -c \"set hidden\" -c \"leftabove vertical diffsplit $LOCAL\" -c \"rightbelow vertical diffsplit $REMOTE\" -c \"wincmd J\" -c \"edit $MERGED\" -c \"wincmd k\" \"$MERGED\"
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
